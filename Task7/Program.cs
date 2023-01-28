@@ -3,4 +3,4 @@
 Console.Clear();
 Console.WriteLine("Введите целое число: ");
 int Num = int.Parse(Console.ReadLine());
-Console.Write("Последняя цифра: "+ Num % 10);
+Console.Write("Последняя цифра: " + Num % 10);
