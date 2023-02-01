@@ -10,24 +10,30 @@ while (Num <= 100)
     if (Num % 3 == 0 && Num % 5 == 0)
     {
         Console.ForegroundColor = ConsoleColor.Green;
-        Console.Write("FizzBuzz, ");
-        Console.ForegroundColor = ConsoleColor.White;
+        Console.Write("FizzBuzz");
     }
     else if (Num % 3 == 0)
     {
         Console.ForegroundColor = ConsoleColor.Red;
-        Console.Write("Fizz, ");
-        Console.ForegroundColor = ConsoleColor.White;
+        Console.Write("Fizz");
     }
     else if (Num % 5 == 0)
     {
         Console.ForegroundColor = ConsoleColor.Yellow;
-        Console.Write("Buzz, ");
-        Console.ForegroundColor = ConsoleColor.White;
+        Console.Write("Buzz");
     }
     else
     {
-        Console.Write($"{Num}, ");
+        Console.Write(Num);
+    }
+    Console.ForegroundColor = ConsoleColor.White;
+    if (Num == 100)
+    {
+        Console.Write(".");
+    }
+    else
+    {
+        Console.Write(", ");
     }
     Num++;
 }
