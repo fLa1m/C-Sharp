@@ -28,9 +28,28 @@ void AmountDigit(int[] array)
         {
             sumPositive += array[i];
         }
-        else if (array[i] < 0)
+        else
         {
             sumNegative += array[i];
+        }
+    }
+    Console.WriteLine($"Сумма положительных чисел = {sumPositive}");
+    Console.WriteLine($"Сумма отрицательных чисел = {sumNegative}");
+}
+
+void ForeachAmountDigit(int[] array)
+{
+    int sumPositive = 0;
+    int sumNegative = 0;
+    foreach (int i in array)
+    {
+        if (i > 0)
+        {
+            sumPositive += i;
+        }
+        else
+        {
+            sumNegative += i;
         }
     }
     Console.WriteLine($"Сумма положительных чисел = {sumPositive}");
@@ -59,4 +78,5 @@ int min = DataEntry("Введите минимальное значение ин
 int max = DataEntry("Введите максмальное значение интервала: ");
 int[] array = GenerateArray(length, min, max);
 PrintArray(array);
+ForeachAmountDigit(array);
 AmountDigit(array);
