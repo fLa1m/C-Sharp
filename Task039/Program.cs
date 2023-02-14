@@ -22,26 +22,13 @@ void ArrayTurn(int[] array)
 {
     int temp = 0;
     int iLast = array.Length - 1;
-    if (array.Length % 2 == 0)
-    {
-        for (int i = 0; i < array.Length / 2; i++)
+    for (int i = 0; i < array.Length / 2; i++) // условие через if не нужно потому что при нечетной длине массива элемент по середине не нужно менять
         {
             temp = array[i];
-            array[i] = array[iLast];
+            array[i] = array[iLast]; // можно array[array.Length - 1 - i] вместо переменной iLast
             array[iLast] = temp;
             iLast--;
         }
-    }
-    else
-    {
-        for (int i = 0; i < array.Length / 2 + 1; i++)
-        {
-            temp = array[i];
-            array[i] = array[iLast];
-            array[iLast] = temp;
-            iLast--;
-        }
-    }
 }
 
 Console.Clear();
