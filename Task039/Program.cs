@@ -54,3 +54,5 @@ Console.WriteLine($"[{String.Join(", ", array)}]");
 ArrayTurn(array);
 Console.WriteLine("Перевернутый массив:");
 Console.WriteLine($"[{String.Join(", ", array)}]");
+
+// Второй способ через создание нового массива.
