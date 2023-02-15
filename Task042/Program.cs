@@ -18,10 +18,10 @@ int ArrayLength(int num)
     return count;
 }
 
-int[] GenerateArray(int length, int num)
+int[] GenerateArray(int length, int num) // вместо массива можно было использовать строку str = Convert.ToString(Num % 2) + str;
 {
     int[] array = new int[length];
-    for (int i = length - 1; i >= 0; i--) 
+    for (int i = length - 1; i >= 0; i--)
     {
         array[i] = num % 2;
         num /= 2;
@@ -29,8 +29,19 @@ int[] GenerateArray(int length, int num)
     return array;
 }
 
+// string DecimalToBinary(int someNum)
+// {
+//     string str = "";
+//     do
+//     {
+//         str = Convert.ToString(someNum % 2) + str;
+//         someNum = someNum / 2;
+//     } while (someNum != 0);
+//     return str;
+// }
+
 Console.Clear();
 int number = DataEntry("Введите число: ");
 //int length = ArrayLength(number);
-int [] arr = GenerateArray(ArrayLength(number), number);
+int[] arr = GenerateArray(ArrayLength(number), number);
 Console.WriteLine(String.Join("", arr));
