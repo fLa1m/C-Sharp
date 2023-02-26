@@ -10,6 +10,9 @@
 // 2 2 6
 // 3 4 7
 
+const int row = 0;
+const int column = 1;
+
 int DataInput(string message)
 {
     Console.Write(message);
@@ -42,37 +45,48 @@ void PrintArray(int[,] array)
     }
 }
 
-int[,] MinPosition(int[,] array)
+int[] MinPosition(int[,] array)
 {
     int minRow = 0;
     int minColumn = 0;
-    int minNum = array[minRow, minColumn];
+    int[] minPositionInfo = new int[2];
     for (int i = 0; i < array.GetLength(0); i++)
     {
         for (int j = 0; j < array.GetLength(1); j++)
         {
             if (array[i, j] < array[minRow, minColumn]) { minRow = i; minColumn = j; }
         }
-        minNum = array[minRow, minColumn];
     }
-    Console.WriteLine($"{minNum}, {minRow}, {minColumn}");
+    minPositionInfo[row] = minRow;
+    minPositionInfo[column] = minColumn;
+    return minPositionInfo;
+}
 
-    int[,] newArr = new int[array.GetLength(0) - 1, array.GetLength(1) - 1];
-    for (int i = 0; i < minRow; i++)
+int[,] DelRowColumn(int[,] array, int[] infoArray)
+{
+    int arrRow = array.GetLength(0) - 1;
+    int arrColumn = array.GetLength(1) - 1;
+    int[,] arr = new int[arrRow, arrColumn];
+    int x = 0;
+    for (int i = 0; i < arrRow; i++)
     {
-        for (int j = 0; j < minColumn; j++)
+        int y = 0;
+        for (int j = 0; j < arrColumn; j++)
         {
-            newArr[i, j] = array[i, j];
+            if (y == infoArray[column])
+            {
+                y++;
+            }
+            if (x == infoArray[row])
+            {
+                x++;
+            }
+            arr[i, j] = array[x, y];
+            y++;
         }
+        x++;
     }
-    for (int i = minRow + 1; i < array.GetLength(0); i++)
-    {
-        for (int j = minColumn + 1; j < array.GetLength(1); j++)
-        {
-            newArr[i, j] = array[i, j];
-        }
-    }
-    return newArr;
+    return arr;
 }
 
 int rows = DataInput("Введите количество рядов: ");
@@ -80,5 +94,9 @@ int columns = DataInput("Введите количество столбцов: "
 int[,] matrix = FillArray(rows, columns);
 Console.WriteLine();
 PrintArray(matrix);
-int[,] arr = MinPosition(matrix);
-PrintArray(arr);
+int[] minPos = MinPosition(matrix);
+Console.WriteLine();
+Console.WriteLine($"Первое минимальное число: ряд {minPos[row] + 1}, столбец {minPos[column] + 1}");
+int[,] newArr = DelRowColumn(matrix, minPos);
+Console.WriteLine();
+PrintArray(newArr);
